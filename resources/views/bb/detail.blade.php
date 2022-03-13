@@ -6,5 +6,6 @@
     <h1>{{$bb->title}}</h1>
     <p>{{$bb->content}}</p>
     <p>{{$bb->price}} руб.</p>
+    <p>Автор: {{$bb->user->name}}</p>
     <p><a href="{{route('index')}}">Все объявления</a></p>
 @endsection

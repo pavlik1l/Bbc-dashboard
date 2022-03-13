@@ -11,6 +11,23 @@
   </head>
   <body>
       <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+              <div class="container">
+                <a href="{{ route('index') }}" class="navbar-brand mr-auto">Главная</a>
+                @guest
+                <a href="{{ route('register') }}" class="navbar-item item-link">Регистрация</a>
+                <a href="{{ route('login') }}" class="navbar-item item-link">Вход</a>
+                @endguest
+                @auth
+                <span>Привет, <strong>{{ Auth::user()->name }}</strong></span>
+                <a href="{{ route('home') }}" class="navbar-item item-link">Мои объявления</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="form-inline">
+                  @csrf
+                  <input type="submit" class="btn btn-danger" value="Выход">
+                </form>
+                @endauth
+              </div>
+          </nav>
             @yield('content')
       </div>
 
